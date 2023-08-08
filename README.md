@@ -120,7 +120,7 @@ chr8 | 86556663 | 86556822
 # Outputs
 iNPS outputs two result files: `*.like_wig` and `*.like_bed`.  
 ## `*.like_wig`
-&nbsp;&nbsp;&nbsp;&nbsp;A result file records nucleosome profiles. There are 7 columns in this file. Users could extract their interesting part and view the profile easily with some software as Microsoft Excel.  
+A result file records nucleosome profiles. There are 7 columns in this file. Users could extract their interesting part and view the profile easily with some software as Microsoft Excel.  
 * Column 1: Coordinate (10bp resolution) 
 * Column 2: Original nucleosome profile 
 * Column 3: Gaussian convolution smoothed profile 
