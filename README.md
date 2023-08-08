@@ -27,7 +27,7 @@ arguments    | explain
 ---          | ---
 --version    | show program's version number and exit
 -h, --help   | show help message and exit
--i, --input  | `/path/filename` a file of sequencing tags in a standard **BED format** ( chromosome <tab> start <tab> end <tab> name <tab> score <tab> strand )
+-i, --input  | `/path/filename` a file of sequencing tags in a standard **BED format** ( chromosome `<tab>` start `<tab>` end `<tab>` name `<tab>` score `<tab>` strand )
 -o, --output | `/path/filename` here, the name extension is unnecessary. Software will output two result files, `filename_[ChromosomeName].like_b ed` and `filename_[ChromosomeName].like_wig`, to record coordinates and profiles of detected nucleosomes respectively. The chromosome name will be added as suffix in the file names. If your detect nucleosomes on multiple chromosomes, for each chromosome, software will output two result files `filename_[ChromosomeName].like_bed` and `filename_[ChromosomeName].like_wig` respectively. And finally, a file `filename_Gathering.like_bed` will gather the detected nucleosomes on every chromosome. Note that a path `/path/filename/` or `/path/filename_[ChromosomeName]/` will be built to record the preliminary and intermediate data.
 -c, --chrname| Specify the name (or abbreviation) of the chromosome, if you would like to do nucleosome detection **ONLY on ONE single chromosome**. For nucleosome detection on ***multiple chromosomes, please do NOT use this parameter***, software will detect nucleosome on each chromosome *ONE-BY-ONE* in the input data as default.
 -l, --chrlength | The length of the chromosome. **ONLY used for nucleosome detection on ONE single chromosome**. If you do NOT use this parameter, software will find the maximum coordinate in the input data to represent the chromosome length as default. For nucleosome detection on ***multiple chromosomes, please do NOT use this parameter***. The length of each chromosome will be determined by the tag with maximum coordinate of the corresponding chromosome respectively.
@@ -71,4 +71,28 @@ Name | --- | Description
 /PathB/Output/InputData_Summary.txt | Intermediate records | Recording the number of tags, the maximum coordinate among the tags, and the chromosome length of each of the 24 chromosomes (1 ~ 22, X, and Y) respectively. 
 
 # Inputs
+1. Single-end sequencing data  
+&nbsp;&nbsp;&nbsp;&nbsp;Input file of single-end sequencing tags should be a standard BED format (https://genome.ucsc.edu/FAQ/FAQformat.html), which contains the 6 columns segregated by `<tab>`.  
+&nbsp;&nbsp;&nbsp;&nbsp;To have an intuitive look at the BED format, please see the tag coordinate bed files on the webpage (http://dir.nhlbi.nih.gov/papers/lmi/epigenomes/hgtcellnucleosomes.aspx). And here is an example fragment. 
+
+chromosome | start | end | name | score | strand
+--- | --- | --- | ---  | --- | --- 
+chr1 | 121186537 | 121186560 | U0 | 0 | – 
+chr1 | 223780047 | 223780070 | U0 | 0 | + 
+chr1 | 77322505 | 77322528 | U0 | 0 | + 
+chr1 | 173286280 | 173286303 | U0 | 0 | – 
+chr1 | 51114393 | 51114416 | U0 | 0 | + 
+
+&nbsp;&nbsp;&nbsp;&nbsp;Here, not all the information in the table above is necessary. If the sequencing tag is in the forward strand (column 6 is “+”), the coordinate in column 2 is needed, otherwise, if the sequencing tag is in the reverse strand (column 6 is “–”), the coordinate in column 3 is needed.  
+
+&nbsp;&nbsp;&nbsp;&nbsp;If your inputting data is incomplete, please make sure that all the data as highlighted in the table above should be kept in the inputting file, and other places in the table could be filled with “None”, as shown in the following table.
+
+chromosome | start | end | name | score | strand
+--- | --- | --- | ---  | --- | --- 
+**chr1** | None | **121186560** | None | None | **–** 
+**chr1** | **223780047** | None | None | None | **+** 
+**chr1** | **77322505** | None | None | None | **+** 
+**chr1** | None | **173286303** | None | None | **–** 
+**chr1** | **51114393** | None | None | None | **+** 
+
 # Outputs
