@@ -23,7 +23,7 @@
 `$ python3 iNPS_V1.2.2.py -h`
 ## 3. Arguments for command line:
 
-arguments    | explain
+arguments    | explaination
 ---          | ---
 --version    | show program's version number and exit
 -h, --help   | show help message and exit
