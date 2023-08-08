@@ -4,6 +4,8 @@
 - [Usage](#usage)
 - [Inputs](#inputs)
 - [Outputs](#outputs)
+- [Cite iNPS](#cite-inps)
+
 # Overview
 &nbsp;&nbsp;&nbsp;&nbsp;iNPS is improved from X. S. Liu’s NPS algorithm, for high quality nucleosome positioning from MNase-seq data. Our procedure contains the following eight steps.  
 &nbsp;&nbsp;&nbsp;&nbsp;(1) Generate a wave-form nucleosome profile, with the resolution of 10 bp, by extending each tag from the 5’ end by 150 bp, and taking the middle 75 bp as the enrichment of nucleosome signal. For paired-end sequencing data, the middle 50% part of each tag is taken as the enrichment of nucleosome signal.  
@@ -14,8 +16,10 @@
 &nbsp;&nbsp;&nbsp;&nbsp;(6) Merge the closely located nucleosome peaks as “doublets”.   
 &nbsp;&nbsp;&nbsp;&nbsp;(7) Filter some nucleosome peaks with bad shapes.  
 &nbsp;&nbsp;&nbsp;&nbsp;(8) Perform statistical tests to quantify the confidence level of each nucleosome. 
+
 # Environment
 &nbsp;&nbsp;&nbsp;&nbsp;iNPS was developed with python 3.2, so the python 3 environment must be installed under a Linux system. 
+
 # Usage
 ## 1. Command line:  
 `$ python3 iNPS_V1.2.2.py -i -o -c -l --s_p`
@@ -144,3 +148,6 @@ A result file records nucleosome profiles. There are 7 columns in this file. Use
   * “Shoulder”: an independent “shoulder” 
 * Column 9: “-log10(Pvalue_of_peak)”, the tag enrichment within the peak region 
 * Column 10: “-log10(Pvalue_of_valley)”, the tag depletion within the flanking valley region
+
+# Cite iNPS
+[Chen, W., Liu, Y., Zhu, S. et al. Improved nucleosome-positioning algorithm iNPS for accurate nucleosome positioning from sequencing data. Nat Commun 5, 4909 (2014).](https://www.nature.com/articles/ncomms5909)
